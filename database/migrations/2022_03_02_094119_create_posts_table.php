@@ -10,8 +10,8 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->json('title');
-            $table->json('content')->nullable();
+            $table->text('title'); // TODO: json fix $table->json('title');
+            $table->text('content')->nullable(); //TODO: json fix $table->json('content')->nullable();
             $table->dateTime('published_at')->nullable();
             $table->string('meta_title')->nullable();
             $table->text('meta_description')->nullable();
