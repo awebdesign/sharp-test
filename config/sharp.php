@@ -14,21 +14,27 @@ return [
     // Optional. You can display a breadcrumb on all Sharp pages. Default is false.
     'display_breadcrumb' => true,
 
-    // Optional. Handle extensions.
-    //    "extensions" => [
-    //        "assets" => [
-    //            "strategy" => "asset",
-    //            "head" => [
-    //                "/css/inject.css",
-    //            ],
-    //        ],
-    //
-    //        "activate_custom_fields" => false,
-    //    ],
+    'extensions' => [
+        'assets' => [
+            'strategy' => 'raw',
+            'head' => [
+                '/css/sharp-extension.css',
+            ],
+        ],
+
+        //        "activate_custom_fields" => false,
+    ],
 
     // Required. Your entities list, as entityKey => \App\Sharp\Entities\SharpEntity implementation
     'entities' => [
-        //        "my_entity" => \App\Sharp\Entities\MyEntity::class,
+        'posts' => \App\Sharp\Entities\PostEntity::class,
+        'blocks' => \App\Sharp\Entities\PostBlockEntity::class,
+        'categories' => \App\Sharp\Entities\CategoryEntity::class,
+        'authors' => \App\Sharp\Entities\AuthorEntity::class,
+        'profile' => \App\Sharp\Entities\ProfileEntity::class,
+        'dashboard' => \App\Sharp\Entities\DemoDashboardEntity::class,
+
+        'test' => \App\Sharp\Entities\TestEntity::class,
     ],
 
     // Optional. Your dashboards list, as entityKey => \App\Sharp\Entities\SharpDashboardEntity implementation
@@ -43,7 +49,7 @@ return [
 
     // Required. The main menu (left bar), which may contain links to entities, dashboards
     // or external URLs, grouped in categories.
-    'menu' => null, //\App\Sharp\SharpMenu::class
+    'menu' => \App\Sharp\SharpMenu::class, //null
 
     // Optional. Your file upload configuration.
     'uploads' => [
@@ -84,15 +90,15 @@ return [
         //        "guard" => "sharp",
     ],
 
-    //    "login_page_message_blade_path" => env("SHARP_LOGIN_PAGE_MESSAGE_BLADE_PATH", "sharp/_login-page-message"),
+    "login_page_message_blade_path" => env("SHARP_LOGIN_PAGE_MESSAGE_BLADE_PATH", "sharp/_login-page-message"),
 
     'theme' => [
         'primary_color' => '#004c9b',
-        //        "favicon_url" => "",
-        //        "logo_urls" => [
-        //            "menu" => "/sharp-assets/menu-icon.png",
-        //            "login" => "/sharp-assets/login-icon.png",
-        //        ],
+        'favicon_url' => '/img/sharp/favicon-32x32.png',
+        'logo_urls' => [
+            'menu' => '/img/sharp/menu-icon.png',
+            'login' => '/img/sharp/login-icon.png',
+        ],
     ],
 
 ];
