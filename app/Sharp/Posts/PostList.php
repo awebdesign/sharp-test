@@ -19,6 +19,7 @@ use Code16\Sharp\Utils\Links\LinkToEntityList;
 use Code16\Sharp\Utils\Transformers\Attributes\Eloquent\SharpUploadModelThumbnailUrlTransformer;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Database\Eloquent\Builder;
+use App\Sharp\Posts\PostReorder;
 
 class PostList extends SharpEntityList
 {
@@ -66,7 +67,8 @@ class PostList extends SharpEntityList
             ->configurePaginated()
             ->configureEntityState('state', PostStateHandler::class)
             ->configureDefaultSort('published_at', 'desc')
-            ->configureSearchable();
+            ->configureSearchable()
+            ->configureReorderable(new PostReorder());
 
         if (! auth()->user()->isAdmin()) {
             $this->configurePageAlert(
