@@ -37,6 +37,7 @@ return [
         'test' => \App\Sharp\Entities\TestEntity::class,
 
         'products' => \App\Sharp\Entities\ProductEntity::class,
+        'demo' => \App\Sharp\Entities\DemoEntity::class,
     ],
 
     // Optional. Your dashboards list, as entityKey => \App\Sharp\Entities\SharpDashboardEntity implementation

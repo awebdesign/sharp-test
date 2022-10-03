@@ -19,6 +19,7 @@ class SharpMenu extends BaseSharpMenu
             ->addEntityLink('dashboard', 'Dashboard', 'fas fa-chart-line')
             ->addEntityLink('profile', 'Profile', 'fa fa-user')
             ->addEntityLink('test', 'Fields test', 'fas fa-cog')
-            ->addEntityLink('products', 'Products', 'fas fa-dollar');
+            ->addEntityLink('products', 'Products', 'fas fa-dollar')
+            ->addEntityLink('demo', 'Demo', 'fas fa-plane');
     }
 }
