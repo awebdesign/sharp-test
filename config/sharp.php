@@ -38,6 +38,7 @@ return [
 
         'products' => \App\Sharp\Entities\ProductEntity::class,
         'demo' => \App\Sharp\Entities\DemoEntity::class,
+        'prices' => \App\Sharp\Entities\DemoPriceEntity::class,
     ],
 
     // Optional. Your dashboards list, as entityKey => \App\Sharp\Entities\SharpDashboardEntity implementation

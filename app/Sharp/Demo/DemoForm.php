@@ -26,6 +26,16 @@ class DemoForm extends SharpForm
             ->addField(
                 SharpFormTextField::make('name')
                     ->setLabel('Name')
+            )
+            ->addField(
+                SharpFormListField::make("prices")
+                    ->setLabel("Demo Prices")
+                    ->setAddable()
+                    ->setRemovable()
+                    ->addItemField(
+                        SharpFormNumberField::make("price")
+                            ->setLabel("Price")
+                    )
             );
     }
 
@@ -34,15 +44,20 @@ class DemoForm extends SharpForm
         $formLayout
             ->addTab('Content', function (FormLayoutTab $tab) {
                 $tab
-                    ->addColumn(12, function (FormLayoutColumn $column) {
+                    ->addColumn(6, function (FormLayoutColumn $column) {
                         $column->withSingleField('name');
+                    })
+                    ->addColumn(6, function(FormLayoutColumn $column) {
+                        $column->withSingleField("prices", function(FormLayoutColumn $listItem) {
+                             $listItem->withSingleField("price");
+                        });
                     });
             });
     }
 
     public function find(mixed $id): array
     {
-        return $this->transform(Demo::findOrFail($id));
+        return $this->transform(Demo::with('prices')->findOrFail($id));
     }
 
     public function update(mixed $id, array $data)

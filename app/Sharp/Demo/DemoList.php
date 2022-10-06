@@ -7,14 +7,11 @@ use Code16\Sharp\EntityList\Fields\EntityListFieldsContainer;
 use Code16\Sharp\EntityList\Fields\EntityListFieldsLayout;
 use Code16\Sharp\EntityList\SharpEntityList;
 use Illuminate\Contracts\Support\Arrayable;
+use Code16\Sharp\Show\Fields\SharpShowEntityListField;
 use App\Models\Demo;
 
 class DemoList extends SharpEntityList
 {
-    public function __construct()
-    {
-    }
-
     public function buildListConfig(): void
     {
         $this
@@ -30,13 +27,19 @@ class DemoList extends SharpEntityList
                 EntityListField::make('name')
                     ->setLabel('Name')
                     ->setSortable()
+            )
+            ->addField(
+                EntityListField::make('prices')
+                    ->setLabel('Prices')
+                    ->setSortable()
             );
     }
 
     protected function buildListLayout(EntityListFieldsLayout $fieldsLayout): void
     {
         $fieldsLayout
-            ->addColumn('name', 6);
+            ->addColumn('name', 6)
+            ->addColumn('prices', 6);
     }
 
     public function getListData(): array|Arrayable
@@ -45,9 +48,9 @@ class DemoList extends SharpEntityList
                 ->orderBy($this->queryParams->sortedBy(), $this->queryParams->sortedDir());
 
         return $this
-            // ->setCustomTransformer("demprices", function($value, Demo $demo) {
-            //     return $demo->motor === "EV" ? "electric" : "combustion";
-            // })
+            ->setCustomTransformer("prices", function($value, Demo $demo) {
+                return implode(', ', array_column($demo->prices->toArray(), 'price'));
+            })
             ->transform($demo->paginate(20)
         );
     }

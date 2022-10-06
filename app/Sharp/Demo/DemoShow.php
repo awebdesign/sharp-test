@@ -27,9 +27,15 @@ class DemoShow extends SharpShow
     protected function buildShowFields(FieldsContainer $showFields): void
     {
         $showFields
-            ->addField(SharpShowTextField::make('reference')->setLabel('Reference'))
             ->addField(SharpShowTextField::make('name')->setLabel('Name'))
-            ->addField(SharpShowTextField::make('description')->setLabel('description'));
+            ->addField(
+                SharpShowEntityListField::make('prices', 'prices')
+                    ->setLabel('Prices')
+                    ->showCreateButton(false)
+                    ->hideFilterWithValue('demo', function ($instanceId) {
+                        return $instanceId;
+                    })
+            );
     }
 
     protected function buildShowLayout(ShowLayout $showLayout): void
@@ -38,11 +44,9 @@ class DemoShow extends SharpShow
             $section
                 ->addColumn(6, function (ShowLayoutColumn $column) {
                     $column
-                        ->withSingleField('reference')
-                        ->withSingleField('name')
-                        ->withSingleField('description');
+                        ->withSingleField('name');
                 });
-        });
-
+        })
+        ->addEntityListSection('prices');
     }
 }
