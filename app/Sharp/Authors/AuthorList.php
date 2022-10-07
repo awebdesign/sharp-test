@@ -5,7 +5,7 @@ namespace App\Sharp\Authors;
 use App\Models\User;
 use App\Sharp\Authors\Commands\InviteUserCommand;
 use App\Sharp\Authors\Commands\VisitFacebookProfileCommand;
-use Code16\Sharp\Show\Fields\SharpShowTextField;
+use Code16\Sharp\Show\Fields\Text;
 use Code16\Sharp\Utils\Fields\FieldsContainer;
 use Code16\Sharp\Show\Layout\ShowLayoutSection;
 use Code16\Sharp\EntityList\SharpEntityList;
@@ -19,24 +19,24 @@ class AuthorList extends SharpEntityList
     {
         $fieldsContainer
             ->addField(
-                SharpShowTextField::make('avatar')
+                Text::make('avatar')
                     ->setLabel('')
                     ->width(1),
             )
             ->addField(
-                SharpShowTextField::make('name')
+                Text::make('name')
                     ->setLabel('Name')
                     ->width(3)
                     ->setSortable(),
             )
             ->addField(
-                SharpShowTextField::make('email')
+                Text::make('email')
                     ->setLabel('Email')
                     ->width(4)
                     ->setSortable(),
             )
             ->addField(
-                SharpShowTextField::make('role')
+                Text::make('role')
                     ->width(4)
                     ->setLabel('Role'),
             );

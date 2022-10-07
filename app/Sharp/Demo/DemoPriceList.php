@@ -2,12 +2,12 @@
 
 namespace App\Sharp\Demo;
 
-use Code16\Sharp\Show\Fields\SharpShowTextField;
+use Code16\Sharp\Show\Fields\Text;
 use Code16\Sharp\Utils\Fields\FieldsContainer;
 use Code16\Sharp\Show\Layout\ShowLayoutSection;
 use Code16\Sharp\EntityList\SharpEntityList;
 use Illuminate\Contracts\Support\Arrayable;
-use Code16\Sharp\Show\Fields\SharpShowSharpShowTextField;
+use Code16\Sharp\Show\Fields\SharpShowText;
 use App\Models\DemoPrice;
 use Code16\Sharp\EntityList\Commands\ReorderHandler;
 
@@ -38,7 +38,7 @@ class DemoPriceList extends SharpEntityList
     {
         $fieldsContainer
             ->addField(
-                SharpShowTextField::make('price')
+                Text::make('price')
                     ->setLabel('Prices')
                     //->setSortable()
             );

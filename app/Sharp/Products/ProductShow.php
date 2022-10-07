@@ -4,8 +4,8 @@ namespace App\Sharp\Products;
 
 use App\Models\Product;
 use App\Sharp\Utils\Filters\CategoryFilter;
-use Code16\Sharp\Show\Fields\SharpShowSharpShowTextField;
-use Code16\Sharp\Show\Fields\SharpShowTextField;
+use Code16\Sharp\Show\Fields\SharpShowText;
+use Code16\Sharp\Show\Fields\Text;
 use Code16\Sharp\Show\Layout\ShowLayout;
 use Code16\Sharp\Show\Layout\ShowLayoutColumn;
 use Code16\Sharp\Show\Layout\ShowLayoutSection;
@@ -27,9 +27,9 @@ class ProductShow extends SharpShow
     protected function buildShowFields(FieldsContainer $showFields): void
     {
         $showFields
-            ->addField(SharpShowTextField::make('reference')->setLabel('Reference'))
-            ->addField(SharpShowTextField::make('name')->setLabel('Name'))
-            ->addField(SharpShowTextField::make('description')->setLabel('description'));
+            ->addField(Text::make('reference')->setLabel('Reference'))
+            ->addField(Text::make('name')->setLabel('Name'))
+            ->addField(Text::make('description')->setLabel('description'));
     }
 
     protected function buildShowLayout(ShowLayout $showLayout): void

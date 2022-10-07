@@ -5,7 +5,7 @@ namespace App\Sharp\Posts\Blocks;
 use App\Models\Media;
 use App\Models\PostBlock;
 use Code16\Sharp\EntityList\Commands\ReorderHandler;
-use Code16\Sharp\Show\Fields\SharpShowTextField;
+use Code16\Sharp\Show\Fields\Text;
 use Code16\Sharp\Utils\Fields\FieldsContainer;
 use Code16\Sharp\Show\Layout\ShowLayoutSection;
 use Code16\Sharp\EntityList\SharpEntityList;
@@ -62,7 +62,7 @@ class PostBlockList extends SharpEntityList
     protected function buildListFields(FieldsContainer $fieldsContainer): void
     {
         $fieldsContainer
-            ->addField(SharpShowTextField::make('type_label')->setLabel('Type')->width(2))
-            ->addField(SharpShowTextField::make('content'));
+            ->addField(Text::make('type_label')->setLabel('Type')->width(2))
+            ->addField(Text::make('content'));
     }
 }

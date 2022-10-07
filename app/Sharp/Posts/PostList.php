@@ -11,7 +11,7 @@ use App\Sharp\Utils\Filters\AuthorFilter;
 use App\Sharp\Utils\Filters\CategoryFilter;
 use App\Sharp\Utils\Filters\PeriodFilter;
 use App\Sharp\Utils\Filters\StateFilter;
-use Code16\Sharp\Show\Fields\SharpShowTextField;
+use Code16\Sharp\Show\Fields\Text;
 use Code16\Sharp\Utils\Fields\FieldsContainer;
 use Code16\Sharp\Show\Layout\ShowLayoutSection;
 use Code16\Sharp\EntityList\SharpEntityList;
@@ -20,17 +20,17 @@ use Code16\Sharp\Utils\Transformers\Attributes\Eloquent\SharpUploadModelThumbnai
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Database\Eloquent\Builder;
 use App\Sharp\Posts\PostReorder;
-use Code16\Sharp\Show\Fields\SharpShowEntityListField;
+use Code16\Sharp\Show\Fields\EntityList;
 
 class PostList extends SharpEntityList
 {
     public function schema(string $type): array
     {
         return [
-            SharpShowTextField::make('cover')->width(1),
-            SharpShowTextField::make('title')->setLabel('Title')->width(4),
-            SharpShowTextField::make('author:name')->setLabel('Author')->setSortable()->width(3),
-            SharpShowTextField::make('published_at')->setLabel('Published at')->setSortable()->width(4),
+            Text::make('cover')->width(1),
+            Text::make('title')->setLabel('Title')->width(4),
+            Text::make('author:name')->setLabel('Author')->setSortable()->width(3),
+            Text::make('published_at')->setLabel('Published at')->setSortable()->width(4),
         ];
     }
 

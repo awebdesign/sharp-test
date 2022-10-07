@@ -2,8 +2,8 @@
 
 namespace App\Sharp\Profile;
 
-use Code16\Sharp\Show\Fields\SharpShowPictureField;
-use Code16\Sharp\Show\Fields\SharpShowTextField;
+use Code16\Sharp\Show\Fields\Picture;
+use Code16\Sharp\Show\Fields\Text;
 use Code16\Sharp\Show\Layout\ShowLayout;
 use Code16\Sharp\Show\Layout\ShowLayoutColumn;
 use Code16\Sharp\Show\Layout\ShowLayoutSection;
@@ -17,15 +17,15 @@ class ProfileSingleShow extends SharpSingleShow
     {
         $showFields
             ->addField(
-                SharpShowTextField::make('name')
+                Text::make('name')
                     ->setLabel('Name'),
             )
             ->addField(
-                SharpShowTextField::make('email')
+                Text::make('email')
                     ->setLabel('Email address'),
             )
             ->addField(
-                SharpShowPictureField::make('avatar'),
+                Picture::make('avatar'),
             );
     }
 

@@ -2,7 +2,7 @@
 
 namespace App\Sharp\Products;
 
-use Code16\Sharp\Show\Fields\SharpShowTextField;
+use Code16\Sharp\Show\Fields\Text;
 use Code16\Sharp\Utils\Fields\FieldsContainer;
 use Code16\Sharp\Show\Layout\ShowLayoutSection;
 use Code16\Sharp\EntityList\SharpEntityList;
@@ -37,19 +37,19 @@ class ProductList extends SharpEntityList
     {
         $fieldsContainer
             ->addField(
-                SharpShowTextField::make('reference')
+                Text::make('reference')
                     ->setLabel('Ref.')
                     ->setSortable()
                     ->width(2)
             )
             ->addField(
-                SharpShowTextField::make('name')
+                Text::make('name')
                     ->setLabel('Name')
                     ->setSortable()
                     ->width(6)
             )
             ->addField(
-                SharpShowTextField::make('price')
+                Text::make('price')
                     ->setLabel('Price')
                     ->setSortable()
                     ->width(4)

@@ -2,7 +2,7 @@
 
 namespace App\Sharp\TestForm;
 
-use Code16\Sharp\Show\Fields\SharpShowTextField;
+use Code16\Sharp\Show\Fields\Text;
 use Code16\Sharp\Show\Layout\ShowLayout;
 use Code16\Sharp\Show\Layout\ShowLayoutColumn;
 use Code16\Sharp\Show\Layout\ShowLayoutSection;
@@ -13,7 +13,7 @@ class TestShow extends SharpSingleShow
 {
     public function buildShowFields(FieldsContainer $showFields): void
     {
-        $showFields->addField(SharpShowTextField::make('message'));
+        $showFields->addField(Text::make('message'));
     }
 
     public function buildShowLayout(ShowLayout $showLayout): void

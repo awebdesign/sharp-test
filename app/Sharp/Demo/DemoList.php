@@ -2,12 +2,12 @@
 
 namespace App\Sharp\Demo;
 
-use Code16\Sharp\Show\Fields\SharpShowTextField;
+use Code16\Sharp\Show\Fields\Text;
 use Code16\Sharp\Utils\Fields\FieldsContainer;
 use Code16\Sharp\Show\Layout\ShowLayoutSection;
 use Code16\Sharp\EntityList\SharpEntityList;
 use Illuminate\Contracts\Support\Arrayable;
-use Code16\Sharp\Show\Fields\SharpShowSharpShowTextField;
+use Code16\Sharp\Show\Fields\SharpShowText;
 use App\Models\Demo;
 
 class DemoList extends SharpEntityList
@@ -24,13 +24,13 @@ class DemoList extends SharpEntityList
     {
         $fieldsContainer
             ->addField(
-                SharpShowTextField::make('name')
+                Text::make('name')
                     ->setLabel('Name')
                     ->setSortable()
                     ->width(6)
             )
             ->addField(
-                SharpShowTextField::make('prices')
+                Text::make('prices')
                     ->setLabel('Prices')
                     ->setSortable()
                     ->width(6)

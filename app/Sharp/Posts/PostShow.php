@@ -9,9 +9,9 @@ use App\Sharp\Utils\Embeds\AuthorEmbed;
 use App\Sharp\Utils\Embeds\CodeEmbed;
 use App\Sharp\Utils\Embeds\RelatedPostEmbed;
 use App\Sharp\Utils\Embeds\TableOfContentsEmbed;
-use Code16\Sharp\Show\Fields\SharpShowSharpShowTextField;
-use Code16\Sharp\Show\Fields\SharpShowPictureField;
-use Code16\Sharp\Show\Fields\SharpShowTextField;
+use Code16\Sharp\Show\Fields\SharpShowText;
+use Code16\Sharp\Show\Fields\Picture;
+use Code16\Sharp\Show\Fields\Text;
 use Code16\Sharp\Show\Layout\ShowLayout;
 use Code16\Sharp\Show\Layout\ShowLayoutColumn;
 use Code16\Sharp\Show\Layout\ShowLayoutSection;
@@ -27,9 +27,9 @@ class PostShow extends SharpShow
     protected function buildShowFields(FieldsContainer $showFields): void
     {
         $showFields
-            ->addField(SharpShowTextField::make('title')->setLabel('Title')->setLocalized())
+            ->addField(Text::make('title')->setLabel('Title')->setLocalized())
             ->addField(
-                SharpShowTextField::make('content')
+                Text::make('content')
                     ->allowEmbeds([
                         RelatedPostEmbed::class,
                         AuthorEmbed::class,
@@ -39,11 +39,11 @@ class PostShow extends SharpShow
                     ->collapseToWordCount(30)
                     ->setLocalized()
             )
-            ->addField(SharpShowTextField::make('author')->setLabel('Author'))
-            ->addField(SharpShowTextField::make('categories')->setLabel('Categories'))
-            ->addField(SharpShowPictureField::make('cover'))
+            ->addField(Text::make('author')->setLabel('Author'))
+            ->addField(Text::make('categories')->setLabel('Categories'))
+            ->addField(Picture::make('cover'))
             ->addField(
-                SharpShowSharpShowTextField::make('blocks', 'blocks')
+                SharpShowText::make('blocks', 'blocks')
                     ->setLabel('Blocks')
                     ->hideFilterWithValue('post', function ($instanceId) {
                         return $instanceId;

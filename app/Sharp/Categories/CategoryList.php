@@ -4,7 +4,7 @@ namespace App\Sharp\Categories;
 
 use App\Models\Category;
 use App\Sharp\Categories\Commands\CleanUnusedCategoriesCommand;
-use Code16\Sharp\Show\Fields\SharpShowTextField;
+use Code16\Sharp\Show\Fields\Text;
 use Code16\Sharp\Utils\Fields\FieldsContainer;
 use Code16\Sharp\Show\Layout\ShowLayoutSection;
 use Code16\Sharp\EntityList\SharpEntityList;
@@ -64,12 +64,12 @@ class CategoryList extends SharpEntityList
     //     $fieldsContainer
     //     //->
     //         ->addField(
-    //             SharpShowTextField::make('name')
+    //             Text::make('name')
     //                 ->setLabel('Name')
     //                 ->setSortable(),
     //         )
     //         ->addField(
-    //             SharpShowTextField::make('posts_count')
+    //             Text::make('posts_count')
     //                 ->setLabel('# posts')
     //                 ->setSortable(),
     //         );
