@@ -4,7 +4,6 @@ namespace App\Sharp\Products;
 
 use App\Models\Product;
 use App\Sharp\Utils\Filters\CategoryFilter;
-use Code16\Sharp\Show\Fields\SharpShowText;
 use Code16\Sharp\Show\Fields\Text;
 use Code16\Sharp\Show\Layout\ShowLayout;
 use Code16\Sharp\Show\Layout\ShowLayoutColumn;

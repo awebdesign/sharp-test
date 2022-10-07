@@ -9,9 +9,9 @@ use App\Sharp\Utils\Embeds\AuthorEmbed;
 use App\Sharp\Utils\Embeds\CodeEmbed;
 use App\Sharp\Utils\Embeds\RelatedPostEmbed;
 use App\Sharp\Utils\Embeds\TableOfContentsEmbed;
-use Code16\Sharp\Show\Fields\SharpShowText;
 use Code16\Sharp\Show\Fields\Picture;
 use Code16\Sharp\Show\Fields\Text;
+use Code16\Sharp\Show\Fields\EntityList;
 use Code16\Sharp\Show\Layout\ShowLayout;
 use Code16\Sharp\Show\Layout\ShowLayoutColumn;
 use Code16\Sharp\Show\Layout\ShowLayoutSection;
@@ -43,7 +43,7 @@ class PostShow extends SharpShow
             ->addField(Text::make('categories')->setLabel('Categories'))
             ->addField(Picture::make('cover'))
             ->addField(
-                SharpShowText::make('blocks', 'blocks')
+                EntityList::make('blocks', 'blocks')
                     ->setLabel('Blocks')
                     ->hideFilterWithValue('post', function ($instanceId) {
                         return $instanceId;
