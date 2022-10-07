@@ -2,9 +2,9 @@
 
 namespace App\Sharp\Products;
 
-use Code16\Sharp\EntityList\Fields\EntityListField;
-use Code16\Sharp\EntityList\Fields\EntityListFieldsContainer;
-use Code16\Sharp\EntityList\Fields\EntityListFieldsLayout;
+use Code16\Sharp\Show\Fields\SharpShowTextField;
+use Code16\Sharp\Utils\Fields\FieldsContainer;
+use Code16\Sharp\Show\Layout\ShowLayoutSection;
 use Code16\Sharp\EntityList\SharpEntityList;
 use Illuminate\Contracts\Support\Arrayable;
 use App\Models\Product;
@@ -33,32 +33,27 @@ class ProductList extends SharpEntityList
         ->configurePaginated();
     }
 
-    protected function buildListFields(EntityListFieldsContainer $fieldsContainer): void
+    protected function buildListFields(FieldsContainer $fieldsContainer): void
     {
         $fieldsContainer
             ->addField(
-                EntityListField::make('reference')
+                SharpShowTextField::make('reference')
                     ->setLabel('Ref.')
                     ->setSortable()
+                    ->width(2)
             )
             ->addField(
-                EntityListField::make('name')
+                SharpShowTextField::make('name')
                     ->setLabel('Name')
                     ->setSortable()
+                    ->width(6)
             )
             ->addField(
-                EntityListField::make('price')
+                SharpShowTextField::make('price')
                     ->setLabel('Price')
                     ->setSortable()
+                    ->width(4)
             );
-    }
-
-    protected function buildListLayout(EntityListFieldsLayout $fieldsLayout): void
-    {
-        $fieldsLayout
-            ->addColumn('reference', 2)
-            ->addColumn('name', 6)
-            ->addColumn('price', 4);
     }
 
     public function getListData(): array|Arrayable

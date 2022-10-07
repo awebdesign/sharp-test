@@ -1,0 +1,28 @@
+public function fields(Request $request)
+{
+    return [
+        ID::make()->sortable(),
+        Text::make('Name')->sortable(),
+
+        new Panel('Address Information', $this->addressFields()),
+    ];
+}
+
+protected function addressFields()
+{
+    return [
+        Text::make('Address Line 2')->hideFromList(),
+        Text::make('City')->hideFromList(),
+        Country::make('Country')->hideFromList(),
+    ];
+}
+
+hideOnList()
+hideOnShow()
+
+hideWhenCreating()
+hideWhenUpdating()
+onlyOnList()
+onlyOnShow()
+onlyOnForm()
+exceptOnForm()

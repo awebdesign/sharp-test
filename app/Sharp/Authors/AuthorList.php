@@ -5,9 +5,9 @@ namespace App\Sharp\Authors;
 use App\Models\User;
 use App\Sharp\Authors\Commands\InviteUserCommand;
 use App\Sharp\Authors\Commands\VisitFacebookProfileCommand;
-use Code16\Sharp\EntityList\Fields\EntityListField;
-use Code16\Sharp\EntityList\Fields\EntityListFieldsContainer;
-use Code16\Sharp\EntityList\Fields\EntityListFieldsLayout;
+use Code16\Sharp\Show\Fields\SharpShowTextField;
+use Code16\Sharp\Utils\Fields\FieldsContainer;
+use Code16\Sharp\Show\Layout\ShowLayoutSection;
 use Code16\Sharp\EntityList\SharpEntityList;
 use Code16\Sharp\Utils\Transformers\Attributes\Eloquent\SharpUploadModelThumbnailUrlTransformer;
 use Illuminate\Contracts\Support\Arrayable;
@@ -15,45 +15,49 @@ use Illuminate\Database\Eloquent\Builder;
 
 class AuthorList extends SharpEntityList
 {
-    protected function buildListFields(EntityListFieldsContainer $fieldsContainer): void
+    protected function buildListFields(FieldsContainer $fieldsContainer): void
     {
         $fieldsContainer
             ->addField(
-                EntityListField::make('avatar')
-                    ->setLabel(''),
+                SharpShowTextField::make('avatar')
+                    ->setLabel('')
+                    ->width(1),
             )
             ->addField(
-                EntityListField::make('name')
+                SharpShowTextField::make('name')
                     ->setLabel('Name')
+                    ->width(3)
                     ->setSortable(),
             )
             ->addField(
-                EntityListField::make('email')
+                SharpShowTextField::make('email')
                     ->setLabel('Email')
+                    ->width(4)
                     ->setSortable(),
             )
             ->addField(
-                EntityListField::make('role')
+                SharpShowTextField::make('role')
+                    ->width(4)
                     ->setLabel('Role'),
             );
     }
 
-    protected function buildListLayout(EntityListFieldsLayout $fieldsLayout): void
-    {
-        $fieldsLayout
-            ->addColumn('avatar', 1)
-            ->addColumn('name', 3)
-            ->addColumn('email', 4)
-            ->addColumn('role', 4);
-    }
+    // protected function buildListLayout(ShowLayoutSection $fieldsLayout): void
+    // {
+    //     $fieldsLayout
+    //         ->addColumn('avatar', 1)
+    //         ->addColumn('name', 3)
+    //         ->addColumn('email', 4)
+    //         ->addColumn('role', 4);
+    // }
 
-    protected function buildListLayoutForSmallScreens(EntityListFieldsLayout $fieldsLayout): void
-    {
-        $fieldsLayout
-            ->addColumn('avatar', 2)
-            ->addColumn('name', 5)
-            ->addColumn('role', 5);
-    }
+    // protected function buildListLayoutForSmallScreens(ShowLayoutSection $fieldsLayout): void
+    // {
+    //     $fieldsLayout
+    //         ->addColumn('avatar', 2)
+    //         ->addColumn('name', 5)
+    //         ->addColumn('role', 5);
+    // }
 
     public function buildListConfig(): void
     {

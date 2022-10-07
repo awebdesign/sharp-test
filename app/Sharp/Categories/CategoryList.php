@@ -4,15 +4,17 @@ namespace App\Sharp\Categories;
 
 use App\Models\Category;
 use App\Sharp\Categories\Commands\CleanUnusedCategoriesCommand;
-use Code16\Sharp\EntityList\Fields\EntityListField;
-use Code16\Sharp\EntityList\Fields\EntityListFieldsContainer;
-use Code16\Sharp\EntityList\Fields\EntityListFieldsLayout;
+use Code16\Sharp\Show\Fields\SharpShowTextField;
+use Code16\Sharp\Utils\Fields\FieldsContainer;
+use Code16\Sharp\Show\Layout\ShowLayoutSection;
 use Code16\Sharp\EntityList\SharpEntityList;
 use Code16\Sharp\Utils\Filters\CheckFilter;
 use Illuminate\Contracts\Support\Arrayable;
 
 class CategoryList extends SharpEntityList
 {
+    use CategoryCommonTrait;
+
     public function buildListConfig(): void
     {
         $this->configureDefaultSort('posts_count', 'desc');
@@ -57,25 +59,26 @@ class CategoryList extends SharpEntityList
         return $this->transform($categories->get());
     }
 
-    protected function buildListFields(EntityListFieldsContainer $fieldsContainer): void
-    {
-        $fieldsContainer
-            ->addField(
-                EntityListField::make('name')
-                    ->setLabel('Name')
-                    ->setSortable(),
-            )
-            ->addField(
-                EntityListField::make('posts_count')
-                    ->setLabel('# posts')
-                    ->setSortable(),
-            );
-    }
+    // protected function buildListFields(FieldsContainer $fieldsContainer): void
+    // {
+    //     $fieldsContainer
+    //     //->
+    //         ->addField(
+    //             SharpShowTextField::make('name')
+    //                 ->setLabel('Name')
+    //                 ->setSortable(),
+    //         )
+    //         ->addField(
+    //             SharpShowTextField::make('posts_count')
+    //                 ->setLabel('# posts')
+    //                 ->setSortable(),
+    //         );
+    // }
 
-    protected function buildListLayout(EntityListFieldsLayout $fieldsLayout): void
-    {
-        $fieldsLayout
-            ->addColumn('name', 7)
-            ->addColumn('posts_count', 5);
-    }
+    // protected function buildListLayout(ShowLayoutSection $fieldsLayout): void
+    // {
+    //     $fieldsLayout
+    //         ->addColumn('name', 7)
+    //         ->addColumn('posts_count', 5);
+    // }
 }

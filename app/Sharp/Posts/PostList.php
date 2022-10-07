@@ -11,54 +11,27 @@ use App\Sharp\Utils\Filters\AuthorFilter;
 use App\Sharp\Utils\Filters\CategoryFilter;
 use App\Sharp\Utils\Filters\PeriodFilter;
 use App\Sharp\Utils\Filters\StateFilter;
-use Code16\Sharp\EntityList\Fields\EntityListField;
-use Code16\Sharp\EntityList\Fields\EntityListFieldsContainer;
-use Code16\Sharp\EntityList\Fields\EntityListFieldsLayout;
+use Code16\Sharp\Show\Fields\SharpShowTextField;
+use Code16\Sharp\Utils\Fields\FieldsContainer;
+use Code16\Sharp\Show\Layout\ShowLayoutSection;
 use Code16\Sharp\EntityList\SharpEntityList;
 use Code16\Sharp\Utils\Links\LinkToEntityList;
 use Code16\Sharp\Utils\Transformers\Attributes\Eloquent\SharpUploadModelThumbnailUrlTransformer;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Database\Eloquent\Builder;
 use App\Sharp\Posts\PostReorder;
+use Code16\Sharp\Show\Fields\SharpShowEntityListField;
 
 class PostList extends SharpEntityList
 {
-    protected function buildListFields(EntityListFieldsContainer $fieldsContainer): void
+    public function schema(string $type): array
     {
-        $fieldsContainer
-            ->addField(
-                EntityListField::make('cover'),
-            )
-            ->addField(
-                EntityListField::make('title')
-                    ->setLabel('Title'),
-            )
-            ->addField(
-                EntityListField::make('author:name')
-                    ->setLabel('Author')
-                    ->setSortable(),
-            )
-            ->addField(
-                EntityListField::make('published_at')
-                    ->setLabel('Published at')
-                    ->setSortable(),
-            );
-    }
-
-    protected function buildListLayout(EntityListFieldsLayout $fieldsLayout): void
-    {
-        $fieldsLayout
-            ->addColumn('cover', 1)
-            ->addColumn('title', 4)
-            ->addColumn('author:name', 3)
-            ->addColumn('published_at', 4);
-    }
-
-    protected function buildListLayoutForSmallScreens(EntityListFieldsLayout $fieldsLayout): void
-    {
-        $fieldsLayout
-            ->addColumn('title', 6)
-            ->addColumn('published_at', 6);
+        return [
+            SharpShowTextField::make('cover')->width(1),
+            SharpShowTextField::make('title')->setLabel('Title')->width(4),
+            SharpShowTextField::make('author:name')->setLabel('Author')->setSortable()->width(3),
+            SharpShowTextField::make('published_at')->setLabel('Published at')->setSortable()->width(4),
+        ];
     }
 
     public function buildListConfig(): void

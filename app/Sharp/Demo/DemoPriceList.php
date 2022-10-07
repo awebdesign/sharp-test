@@ -2,12 +2,12 @@
 
 namespace App\Sharp\Demo;
 
-use Code16\Sharp\EntityList\Fields\EntityListField;
-use Code16\Sharp\EntityList\Fields\EntityListFieldsContainer;
-use Code16\Sharp\EntityList\Fields\EntityListFieldsLayout;
+use Code16\Sharp\Show\Fields\SharpShowTextField;
+use Code16\Sharp\Utils\Fields\FieldsContainer;
+use Code16\Sharp\Show\Layout\ShowLayoutSection;
 use Code16\Sharp\EntityList\SharpEntityList;
 use Illuminate\Contracts\Support\Arrayable;
-use Code16\Sharp\Show\Fields\SharpShowEntityListField;
+use Code16\Sharp\Show\Fields\SharpShowSharpShowTextField;
 use App\Models\DemoPrice;
 use Code16\Sharp\EntityList\Commands\ReorderHandler;
 
@@ -34,17 +34,17 @@ class DemoPriceList extends SharpEntityList
         //     });
     }
 
-    protected function buildListFields(EntityListFieldsContainer $fieldsContainer): void
+    protected function buildListFields(FieldsContainer $fieldsContainer): void
     {
         $fieldsContainer
             ->addField(
-                EntityListField::make('price')
+                SharpShowTextField::make('price')
                     ->setLabel('Prices')
                     //->setSortable()
             );
     }
 
-    protected function buildListLayout(EntityListFieldsLayout $fieldsLayout): void
+    protected function buildListLayout(ShowLayoutSection $fieldsLayout): void
     {
         $fieldsLayout
             ->addColumn('price', 6);

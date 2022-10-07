@@ -5,9 +5,9 @@ namespace App\Sharp\Posts\Blocks;
 use App\Models\Media;
 use App\Models\PostBlock;
 use Code16\Sharp\EntityList\Commands\ReorderHandler;
-use Code16\Sharp\EntityList\Fields\EntityListField;
-use Code16\Sharp\EntityList\Fields\EntityListFieldsContainer;
-use Code16\Sharp\EntityList\Fields\EntityListFieldsLayout;
+use Code16\Sharp\Show\Fields\SharpShowTextField;
+use Code16\Sharp\Utils\Fields\FieldsContainer;
+use Code16\Sharp\Show\Layout\ShowLayoutSection;
 use Code16\Sharp\EntityList\SharpEntityList;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Support\Str;
@@ -59,17 +59,10 @@ class PostBlockList extends SharpEntityList
             ->transform($postBlocks);
     }
 
-    protected function buildListFields(EntityListFieldsContainer $fieldsContainer): void
+    protected function buildListFields(FieldsContainer $fieldsContainer): void
     {
         $fieldsContainer
-            ->addField(EntityListField::make('type_label')->setLabel('Type'))
-            ->addField(EntityListField::make('content'));
-    }
-
-    protected function buildListLayout(EntityListFieldsLayout $fieldsLayout): void
-    {
-        $fieldsLayout
-            ->addColumn('type_label', 2)
-            ->addColumn('content');
+            ->addField(SharpShowTextField::make('type_label')->setLabel('Type')->width(2))
+            ->addField(SharpShowTextField::make('content'));
     }
 }
