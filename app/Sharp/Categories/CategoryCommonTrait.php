@@ -4,6 +4,7 @@ namespace App\Sharp\Categories;
 
 use Code16\Sharp\Show\Fields\Text;
 use Code16\Sharp\Show\Fields\EntityList;
+use App\Sharp\Utils\Filters\CategoryFilter;
 
 trait CategoryCommonTrait {
 
