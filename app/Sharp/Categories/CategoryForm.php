@@ -12,7 +12,7 @@ use Code16\Sharp\Utils\Fields\FieldsContainer;
 
 class CategoryForm extends SharpForm
 {
-    use WithSharpFormEloquentUpdater;
+    use CategoryCommonTrait, WithSharpFormEloquentUpdater;
 
     protected ?string $formValidatorClass = CategoryValidator::class;
 

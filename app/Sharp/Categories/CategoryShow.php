@@ -23,7 +23,7 @@ class CategoryShow extends SharpShow
 
     public function find(mixed $id): array
     {
-        return $this->transform(Category::findOrFail($id));
+        return $this->transform(Category::withCount('posts')->findOrFail($id));
     }
 
     // protected function buildShowFields(FieldsContainer $showFields): void
